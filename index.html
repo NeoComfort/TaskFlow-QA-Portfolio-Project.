@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow | QA Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">QA PORTFOLIO PROJECT</p>
+          <h1>TaskFlow</h1>
+          <p class="subtitle">A simple task dashboard built to demonstrate API testing and quality assurance.</p>
+        </div>
+        <div class="api-status" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="api-status-text">Checking API...</span>
+        </div>
+      </header>
+
+      <section class="dashboard" aria-label="Task dashboard">
+        <article class="card create-card">
+          <h2>Create a task</h2>
+          <form id="task-form">
+            <label for="title">Task title <span aria-hidden="true">*</span></label>
+            <input id="title" name="title" maxlength="120" placeholder="e.g. Write API tests" required />
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" placeholder="What needs to be done?"></textarea>
+
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="todo">To do</option>
+              <option value="in_progress">In progress</option>
+              <option value="done">Done</option>
+            </select>
+
+            <button type="submit">Add task</button>
+            <p id="form-message" class="form-message" aria-live="polite"></p>
+          </form>
+        </article>
+
+        <article class="card tasks-card">
+          <div class="tasks-heading">
+            <div>
+              <h2>Your tasks</h2>
+              <p id="task-count">0 tasks</p>
+            </div>
+            <label class="filter-label" for="filter">Filter
+              <select id="filter" name="filter">
+                <option value="">All statuses</option>
+                <option value="todo">To do</option>
+                <option value="in_progress">In progress</option>
+                <option value="done">Done</option>
+              </select>
+            </label>
+          </div>
+          <div id="tasks" class="task-list" aria-live="polite"></div>
+        </article>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
